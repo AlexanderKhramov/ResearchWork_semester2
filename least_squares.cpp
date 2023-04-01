@@ -32,7 +32,7 @@ double dot_product(double x[], double y[], int n){
     return res;
 }
 
-void centered_coefficients(double x[], double y[], int n, double* a, double* b, int print){
+void coefficients(double x[], double y[], int n, double* a, double* b, int print){
     double sum_x = sum(x, n);
     double sum_y = sum(y, n);
     for (int i = 0; i < n; i++){
@@ -55,7 +55,7 @@ void centered_coefficients(double x[], double y[], int n, double* a, double* b, 
     }
 }
 
-void coefficients(double x[], double y[], int n, double* a, double* b){
+void coefficients_without_centering(double x[], double y[], int n, double* a, double* b){
     double sum_x = sum(x, n);
     double sum_y = sum(y, n);
     double sum_sq_x = sum_squares(x, n);

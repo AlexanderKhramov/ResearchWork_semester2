@@ -27,10 +27,8 @@ int main()
         x[i] = i;
         y[i] = a0 * i + b0;
     }
-    coefficients(x, y, N, &a, &b);
     cout << "1. Линейная зависимость" << endl;
-    cout << "y["<<N<<"]: ";
-    head(y, 7);
+    coefficients(x, y, N, &a, &b, 1);
     cout << "a: " << a << endl;
     cout << "b: " << b << endl;
     cout << "Среднее отклонение: " << mean_deviation(x, y, N, a, b) << endl;
@@ -39,20 +37,20 @@ int main()
     for (int i = 0; i < N; i++){
         y[i] += (double) (rand() % (int) (2000 * noise)) / 1000 - noise;
     }
-    coefficients(x, y, N, &a, &b);
     cout << endl << "2. Добавили шумы" << endl;
-    cout << "y["<<N<<"]: ";
-    head(y, 7);
-    cout << "a: " << a << endl;
-    cout << "b: " << b << endl;
-    cout << "Среднее отклонение: " << mean_deviation(x, y, N, a, b) << endl;
-    cout << endl << "3. Вычислим, центрировав данные" << endl;
-    centered_coefficients(x, y, N, &a, &b, 1);
+    coefficients(x, y, N, &a, &b, 1);
 //    cout << "y["<<N<<"]: ";
 //    head(y, 7);
     cout << "a: " << a << endl;
     cout << "b: " << b << endl;
     cout << "Среднее отклонение: " << mean_deviation(x, y, N, a, b) << endl;
-    system("pause");
+//    cout << endl << "3. Вычислим, центрировав данные" << endl;
+//    centered_coefficients(x, y, N, &a, &b, 1);
+////    cout << "y["<<N<<"]: ";
+////    head(y, 7);
+//    cout << "a: " << a << endl;
+//    cout << "b: " << b << endl;
+//    cout << "Среднее отклонение: " << mean_deviation(x, y, N, a, b) << endl;
+//    system("pause");
     return 0;
 }
