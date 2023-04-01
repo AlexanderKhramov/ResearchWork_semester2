@@ -9,14 +9,6 @@
 using namespace std;
 
 
-void head(double x[], int n){
-    for(int i = 0; i < n && i < N; i++){
-        cout << setw(10) << x[i];
-    }
-    cout << "..." << endl;
-}
-
-
 int main()
 {
     SetConsoleCP(1251);
@@ -51,6 +43,13 @@ int main()
     cout << endl << "2. Добавили шумы" << endl;
     cout << "y["<<N<<"]: ";
     head(y, 7);
+    cout << "a: " << a << endl;
+    cout << "b: " << b << endl;
+    cout << "Среднее отклонение: " << mean_deviation(x, y, N, a, b) << endl;
+    cout << endl << "3. Вычислим, центрировав данные" << endl;
+    centered_coefficients(x, y, N, &a, &b, 1);
+//    cout << "y["<<N<<"]: ";
+//    head(y, 7);
     cout << "a: " << a << endl;
     cout << "b: " << b << endl;
     cout << "Среднее отклонение: " << mean_deviation(x, y, N, a, b) << endl;
