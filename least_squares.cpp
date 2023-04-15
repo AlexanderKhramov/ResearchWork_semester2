@@ -35,6 +35,7 @@ double dot_product(double x[], double y[], int n){
 void coefficients(double x[], double y[], int n, double* a, double* b, int print){
     double sum_x = sum(x, n);
     double sum_y = sum(y, n);
+    double sum_sq_x, d_prod;
     for (int i = 0; i < n; i++){
         x[i] -= sum_x / n;
         y[i] -= sum_y / n;
@@ -45,8 +46,8 @@ void coefficients(double x[], double y[], int n, double* a, double* b, int print
         cout << "y["<<n<<"]: ";
         head(y, 7);
     }
-    double sum_sq_x = sum_squares(x, n);
-    double d_prod = dot_product(x, y, n);
+    sum_sq_x = sum_squares(x, n);
+    d_prod = dot_product(x, y, n);
     *a = d_prod / sum_sq_x;
     *b = (sum_y - (*a) * sum_x) / n;
     for (int i = 0; i < n; i++){
