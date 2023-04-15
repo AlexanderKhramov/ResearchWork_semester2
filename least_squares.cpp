@@ -36,24 +36,24 @@ void coefficients(double x[], double y[], int n, double* a, double* b, int print
     double sum_x = sum(x, n);
     double sum_y = sum(y, n);
     double sum_sq_x, d_prod;
+    double* centered_x = new double[n];
+    double* centered_y = new double[n];
     for (int i = 0; i < n; i++){
-        x[i] -= sum_x / n;
-        y[i] -= sum_y / n;
+        centered_x[i] = x[i] - sum_x / n;
+        centered_y[i] = y[i] - sum_y / n;
     }
     if (print){
         cout << "x["<<n<<"]: ";
-        head(x, 7);
+        head(centered_x, 7);
         cout << "y["<<n<<"]: ";
-        head(y, 7);
+        head(centered_y, 7);
     }
-    sum_sq_x = sum_squares(x, n);
-    d_prod = dot_product(x, y, n);
+    sum_sq_x = sum_squares(centered_x, n);
+    d_prod = dot_product(centered_x, centered_y, n);
     *a = d_prod / sum_sq_x;
     *b = (sum_y - (*a) * sum_x) / n;
-    for (int i = 0; i < n; i++){
-        x[i] += sum_x / n;
-        y[i] += sum_y / n;
-    }
+    delete centered_x;
+    delete centered_y;
 }
 
 void coefficients_without_centering(double x[], double y[], int n, double* a, double* b){
